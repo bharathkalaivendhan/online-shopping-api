@@ -1,7 +1,7 @@
 A REST API that will act as backend for simple online shopping application.\
 User can store, retrieve, update and delete various things like users, products, sellers, orders,reviews.\
 It works as backend service for simple online shopping application.\
-I used the concepts of Spring Framework, Spring Boot, Spring RESTful API, Spring Data JPA(in persistance layer) and MySQL(database).\
+I used the concepts of Spring Framework, Spring Boot, Spring RESTful API, Spring Data JPA(in persistance layer) and MySQL(database).
 
 Endpoints:
 
