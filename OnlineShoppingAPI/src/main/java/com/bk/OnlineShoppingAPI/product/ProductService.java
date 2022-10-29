@@ -118,4 +118,26 @@ public class ProductService {
 	{
 		productRepo.deleteAll();
 	}
+	
+	public List<String> getAllCategory() {
+		return productRepo.findDistinctByCategory();	
+	}
+	
+	public List<Product> searchByCategory(String category, Integer minPrice, Integer maxPrice, String orderBy)
+	{
+		if(minPrice==null)
+			minPrice = Integer.MIN_VALUE;
+		if(maxPrice==null)
+			maxPrice = Integer.MAX_VALUE;
+		if(orderBy.equals(new String("DESC")))
+		{
+			return productRepo.findByCategoryAndPriceBetweenOrderByPriceAsc(category, minPrice, maxPrice);
+		}
+		else if(orderBy.equals(new String("DESC"))) {
+			return productRepo.findByCategoryAndPriceBetweenOrderByPriceDesc(category, minPrice, maxPrice);
+		}
+		else {
+			return productRepo.findByCategoryAndPriceBetween(category, minPrice, maxPrice);
+		}
+	}
 }

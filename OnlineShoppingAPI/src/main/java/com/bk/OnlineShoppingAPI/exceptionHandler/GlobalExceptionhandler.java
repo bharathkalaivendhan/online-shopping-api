@@ -12,14 +12,20 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.bk.OnlineShoppingAPI.product.ProductNotFoundException;
 import com.bk.OnlineShoppingAPI.seller.SellerNotFoundException;
-
-
+import com.bk.OnlineShoppingAPI.user.UserNotFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionhandler {
 
 	@ExceptionHandler(SellerNotFoundException.class)
 	public ResponseEntity<ErrorInfo> handleSellerNotFoundExceptionEntity(HttpServletRequest req, Exception ex)
+	{
+		ErrorInfo erroInfo = new ErrorInfo(req.getRequestURI().toString(), ex.getMessage());
+		return new ResponseEntity<ErrorInfo>(erroInfo,HttpStatus.NOT_FOUND);
+	}
+	
+	@ExceptionHandler(UserNotFoundException.class)
+	public ResponseEntity<ErrorInfo> handleUserNotFoundExceptionEntity(HttpServletRequest req, Exception ex)
 	{
 		ErrorInfo erroInfo = new ErrorInfo(req.getRequestURI().toString(), ex.getMessage());
 		return new ResponseEntity<ErrorInfo>(erroInfo,HttpStatus.NOT_FOUND);

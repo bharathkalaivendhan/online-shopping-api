@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bk.OnlineShoppingAPI.exceptionHandler.InvalidRatingException;
@@ -77,5 +78,29 @@ public class ProductController {
 	{
 		productService.removeAllProduct();
 		return new ResponseEntity<Seller>(HttpStatus.OK);
+	}
+	
+	@GetMapping("/get-all-category")
+	ResponseEntity<List<String>> getAllCategory()
+	{
+		return new ResponseEntity<List<String>>(productService.getAllCategory(),HttpStatus.FOUND);	
+	}	
+	
+	@GetMapping("/search-by-name/{productName}")
+	ResponseEntity<List<Product>> searchByName ( @PathVariable("productName") String productName,
+												@RequestParam(required = false, name = "orderBy") String orderBy
+											  )
+	{
+		return null;	
+	}
+	
+	@GetMapping("/search-by-category/{category}")
+	ResponseEntity<List<Product>> searchByCategory ( @PathVariable("category") String category,
+													@RequestParam(required = false, name = "minPrice") Integer minPrice, 
+													@RequestParam(required = false, name = "maxPrice") Integer maxPrice, 
+													@RequestParam(required = false, name = "orderBy") String orderBy
+												  )
+	{
+		return new ResponseEntity<List<Product>>(productService.searchByCategory(category, minPrice, maxPrice, orderBy), HttpStatus.FOUND);	
 	}
 }

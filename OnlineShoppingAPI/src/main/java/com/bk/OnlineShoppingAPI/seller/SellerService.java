@@ -18,8 +18,8 @@ public class SellerService {
 		return;
 	}
 	
-	public void addAllSeller(List<Seller> seller) {
-		sellerRepo.saveAll(seller);
+	public void addAllSeller(List<Seller> sellers) {
+		sellerRepo.saveAll(sellers);
 		return;
 	}
 	
