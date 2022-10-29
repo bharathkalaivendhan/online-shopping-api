@@ -89,9 +89,9 @@ public class ProductController {
 	@GetMapping("/search-by-name/{productName}")
 	ResponseEntity<List<Product>> searchByName ( @PathVariable("productName") String productName,
 												@RequestParam(required = false, name = "orderBy") String orderBy
-											  )
+											  ) throws ProductNotFoundException
 	{
-		return null;	
+		return new ResponseEntity<List<Product>>(productService.searchByName(productName), HttpStatus.FOUND);	
 	}
 	
 	@GetMapping("/search-by-category/{category}")

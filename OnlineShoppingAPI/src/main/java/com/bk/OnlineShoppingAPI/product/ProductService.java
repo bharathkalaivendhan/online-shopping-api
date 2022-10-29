@@ -129,15 +129,26 @@ public class ProductService {
 			minPrice = Integer.MIN_VALUE;
 		if(maxPrice==null)
 			maxPrice = Integer.MAX_VALUE;
-		if(orderBy.equals(new String("DESC")))
+		if(orderBy != null)
+		{
+		if(orderBy.equals("ASC"))
 		{
 			return productRepo.findByCategoryAndPriceBetweenOrderByPriceAsc(category, minPrice, maxPrice);
 		}
-		else if(orderBy.equals(new String("DESC"))) {
+		else {
 			return productRepo.findByCategoryAndPriceBetweenOrderByPriceDesc(category, minPrice, maxPrice);
+		}
 		}
 		else {
 			return productRepo.findByCategoryAndPriceBetween(category, minPrice, maxPrice);
 		}
+	}
+	
+	public List<Product> searchByName(String productName) throws ProductNotFoundException
+	{
+		List<Product> products = productRepo.findByProductNameIgnoreCase(productName);
+		if(products == null)
+			throw new ProductNotFoundException("Product with given Name is Not Found");
+		return products;	
 	}
 }

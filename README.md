@@ -39,7 +39,11 @@ Endpoints:
     -/delete-by-id/{id}\
         to delete a product details using product id.\
     -/delete-all\
-        to delete all product details at once.
+        to delete all product details at once.\
+    -/search-by-name/{productName}?orderBy=(ASC OR DESC)\
+        to search product by product name and order result by ascending or descending.\
+    -/search-by-category/{category}?minPrice=(minimum price amount)&maxPrice=(maximum price amount)&orderBy=(ASC OR DESC)\
+        to search product by product category, minimum price amount, maximum price amount and order result by ascending or descending.
 
 -(hostname)/user\
         -/add\
@@ -59,3 +63,4 @@ Endpoints:
 
 -(hostname)/order\
     *yet to develop
+    
