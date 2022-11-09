@@ -1,7 +1,15 @@
 A REST API that will act as backend for simple online shopping application.\
 User can store, retrieve, update and delete various things like users, products, sellers, orders,reviews.\
-It works as backend service for simple online shopping application.\
-I used the concepts of Spring Framework, Spring Boot, Spring RESTful API, Spring Data JPA(in persistance layer) and MySQL(database).
+It works as backend service for simple online shopping application.
+
+I developed to project to practice the concepts of Spring Framework, Spring Boot, RESTful API, Spring Data JPA(in persistance layer) and MySQL(database).
+
+I used,\
+    Spring Boot(for backend),\
+    RESTful API concepts,\
+    Spring Data JPA(for data accessing layer or persistence layer),\
+    Hibernate(spring data jpa uses hibernate as ORM(Object Relational Mapping) as default),\
+    MySQL(Database(RDBMS))
 
 Endpoints:
 
@@ -62,5 +70,10 @@ Endpoints:
         to delete all user details at once.
 
 -(hostname)/order\
-    *yet to develop
+    -/{productId}?userId=(id of user)&orderedQuantity=(quantity of item ordered)\
+        to order a product using product id and its quantity.\
+    -/get-by-id/{orderId}\
+        to get order details by using order id.\
+    -/get-all
+        to get all orders details at once.\
     
